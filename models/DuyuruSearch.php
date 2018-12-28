@@ -17,8 +17,8 @@ class DuyuruSearch extends Duyuru
     public function rules()
     {
         return [
-            [['id', 'user_id', 'kat_id', 'status', 'sort'], 'integer'],
-            [['title', 'image', 'duyuru', 'started', 'ended'], 'safe'],
+            [['id', 'user_id', 'kat_id', 'sorted'], 'integer'],
+            [['title', 'duyuru', 'status', 'started', 'ended', 'modified'], 'safe'],
         ];
     }
 
@@ -61,15 +61,15 @@ class DuyuruSearch extends Duyuru
             'id' => $this->id,
             'user_id' => $this->user_id,
             'kat_id' => $this->kat_id,
-            'status' => $this->status,
-            'sort' => $this->sort,
+            'sorted' => $this->sorted,
             'started' => $this->started,
             'ended' => $this->ended,
+            'modified' => $this->modified,
         ]);
 
         $query->andFilterWhere(['like', 'title', $this->title])
-            ->andFilterWhere(['like', 'image', $this->image])
-            ->andFilterWhere(['like', 'duyuru', $this->duyuru]);
+            ->andFilterWhere(['like', 'duyuru', $this->duyuru])
+            ->andFilterWhere(['like', 'status', $this->status]);
 
         return $dataProvider;
     }

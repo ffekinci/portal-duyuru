@@ -19,21 +19,21 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'title') ?>
 
+    <?= $form->field($model, 'image') ?>
+
     <?= $form->field($model, 'duyuru') ?>
 
     <?= $form->field($model, 'user_id') ?>
 
-    <?= $form->field($model, 'kat_id') ?>
+    <?php // echo $form->field($model, 'kat_id') ?>
 
     <?php // echo $form->field($model, 'status') ?>
 
-    <?php // echo $form->field($model, 'sorted') ?>
+    <?php // echo $form->field($model, 'sort') ?>
 
     <?php // echo $form->field($model, 'started') ?>
 
     <?php // echo $form->field($model, 'ended') ?>
-
-    <?php // echo $form->field($model, 'modified') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
