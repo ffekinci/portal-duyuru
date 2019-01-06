@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model vendor\kouosl\duyuru\models\Kategori */
 
 $this->title = $model->title;
-$this->params['breadcrumbs'][] = ['label' => 'Kategoris', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Kategoriler', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>

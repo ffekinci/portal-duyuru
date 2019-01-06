@@ -4,6 +4,8 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use kouosl\duyuru\models\Kategori;
 use yii\helpers\ArrayHelper;
+use kartik\datetime\DateTimePicker;
+use kouosl\duyuru\Module;
 
 /* @var $this yii\web\View */
 /* @var $model vendor\kouosl\duyuru\models\Duyuru */
@@ -15,10 +17,8 @@ use yii\helpers\ArrayHelper;
     <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'duyuru')->textarea(['rows' => 6]) ?>
-
-    <?= $form->field($model, 'user_id')->textInput() ?>
+	
+	<?= $form->field($model, 'duyuru')->textarea(['rows' => 6]) ?>
 
     <?= $form->field($model, 'kat_id')->dropDownList(ArrayHelper::map(Kategori::find()->all(), 'id', 'title'), ['prompt'=>'Kategori Seçiniz']) ?>
 
@@ -26,14 +26,22 @@ use yii\helpers\ArrayHelper;
 
     <?= $form->field($model, 'sorted')->textInput() ?>
 
-    <?= $form->field($model, 'started')->textInput() ?>
+    <?= $form->field($model, 'started')->widget(DateTimePicker::classname(), [
+	'options' => ['placeholder' => 'Enter event time ...'],
+	'pluginOptions' => [
+		'autoclose' => true
+	]
+]);?>
 
-    <?= $form->field($model, 'ended')->textInput() ?>
-
-    <?= $form->field($model, 'modified')->textInput() ?>
+<?= $form->field($model, 'ended')->widget(DateTimePicker::classname(), [
+	'options' => ['placeholder' => 'Enter event time ...'],
+	'pluginOptions' => [
+		'autoclose' => true
+	]
+]);?>
 
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton(Module::t('duyuru','Create'), ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

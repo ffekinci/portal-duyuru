@@ -40,13 +40,18 @@ class DuyuruSearch extends Duyuru
      */
     public function search($params)
     {
-        $query = Duyuru::find();
+        $query = Duyuru::find()->joinWith(['user','kategori']);
+        
+        //$dat = date('Y-m-d h:m:s');
+        //$query = Duyuru::find()->where("started <= '$dat' AND ended >= '$dat'");
 
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
+
+        
 
         $this->load($params);
 

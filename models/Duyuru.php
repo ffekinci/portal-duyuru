@@ -34,13 +34,23 @@ class Duyuru extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'duyuru', 'user_id', 'kat_id', 'sorted', 'started', 'ended', 'modified'], 'required'],
+            [['title', 'duyuru', 'kat_id', 'sorted', 'started', 'ended'], 'required'],
             [['duyuru', 'status'], 'string'],
             [['user_id', 'kat_id', 'sorted'], 'integer'],
             [['started', 'ended', 'modified'], 'safe'],
             [['title'], 'string', 'max' => 255],
         ];
     }
+
+    public function getKategori()
+            {
+                return $this->hasOne(Kategori::className(), ['id' => 'kat_id']);
+            }
+
+    public function getUser()
+            {
+                return $this->hasOne(User::className(), ['id' => 'user_id']);
+            }
 
     /**
      * {@inheritdoc}

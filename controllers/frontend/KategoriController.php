@@ -1,20 +1,18 @@
 <?php
 
-namespace kouosl\duyuru\controllers\backend;
+namespace kouosl\duyuru\controllers\frontend;
 
 use Yii;
-use kouosl\duyuru\models\Duyuru;
-use kouosl\duyuru\models\DuyuruSearch;
+use kouosl\duyuru\models\Kategori;
+use kouosl\duyuru\models\KategoriSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use yii\data\Sort;
-use yii\filters\AccessControl;
 
 /**
- * DuyuruController implements the CRUD actions for Duyuru model.
+ * KategoriController implements the CRUD actions for Kategori model.
  */
-class DuyuruController extends Controller
+class KategoriController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -22,22 +20,6 @@ class DuyuruController extends Controller
     public function behaviors()
     {
         return [
-            'access' => [
-                'class' => AccessControl::className(),
-                'only' => ['index','create', 'update', 'view','delete'],
-                'rules' => [
-                    [
-                        'allow' => true,
-                        'actions' => ['index', 'view'],
-                        'roles' => ['?'],
-                    ],
-                    [
-                        'allow' => true,
-                        'actions' => ['index','create', 'update', 'view','delete'],
-                        'roles' => ['@'],
-                    ],
-                ],
-            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -48,23 +30,22 @@ class DuyuruController extends Controller
     }
 
     /**
-     * Lists all Duyuru models.
+     * Lists all Kategori models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new DuyuruSearch();
+        $searchModel = new KategoriSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
-
         ]);
     }
 
     /**
-     * Displays a single Duyuru model.
+     * Displays a single Kategori model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -77,18 +58,15 @@ class DuyuruController extends Controller
     }
 
     /**
-     * Creates a new Duyuru model.
+     * Creates a new Kategori model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Duyuru();
+        $model = new Kategori();
 
-        if ($model->load(Yii::$app->request->post())) {
-            $model-> modified = date('Y-m-d h:m:s');
-            $model-> user_id = \Yii::$app->user->identity->id;
-			$model->save();
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -98,7 +76,7 @@ class DuyuruController extends Controller
     }
 
     /**
-     * Updates an existing Duyuru model.
+     * Updates an existing Kategori model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -118,7 +96,7 @@ class DuyuruController extends Controller
     }
 
     /**
-     * Deletes an existing Duyuru model.
+     * Deletes an existing Kategori model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -132,15 +110,15 @@ class DuyuruController extends Controller
     }
 
     /**
-     * Finds the Duyuru model based on its primary key value.
+     * Finds the Kategori model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Duyuru the loaded model
+     * @return Kategori the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Duyuru::findOne($id)) !== null) {
+        if (($model = Kategori::findOne($id)) !== null) {
             return $model;
         }
 
