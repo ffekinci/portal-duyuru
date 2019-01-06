@@ -2,11 +2,11 @@
 <div class="site-index">
 
     <div class="jumbotron">
-        <h1>Kou Osl Yii2 App</h1>
+        <h1>KouOsl Duyuru Modülü - Admin</h1>
 
-        <p class="lead">Örnek uygulamayı başarılı bir şekilde çalıştırdınız.</p>
+        <p class="lead">Duyuru Modülü Admin Paneline Hoşgeldiniz.</p>
 
-        <p><a class="btn btn-lg btn-success" href="#">Modüller ve konfürgasyon!</a></p>
+        <p><a class="btn btn-lg btn-success" href="/admin/duyuru/duyuru">Duyurular</a> <a class="btn btn-lg btn-success" href="/admin/duyuru/kategori">Kategoriler</a></p>
     </div>
 
 </div>
