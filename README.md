@@ -29,6 +29,7 @@ php yii migrate --migrationPath=@vendor/kouosl/portal-duyuru/migrations
 
 Frontend Sayfası:
 >http://portal.kouosl/duyuru/duyuru
+
 Backend Sayfaları:
 >http://portal.kouosl/admin/duyuru/duyuru
 >http://portal.kouosl/admin/duyuru/kategori
